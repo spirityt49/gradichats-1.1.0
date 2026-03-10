@@ -1,0 +1,77 @@
+/* style.css */
+:root {
+    --primary-gradient: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+    --secondary-gradient: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    --insta-blue: #0095f6;
+    --border: #dbdbdb;
+    --bg-main: #f4f6f8;
+    --text-dark: #262626;
+}
+
+body { margin: 0; font-family: 'Poppins', sans-serif; height: 100vh; color: var(--text-dark); overflow: hidden; }
+.hidden { display: none !important; }
+
+/* 1. The Dynamic Mesh Background */
+.animated-bg {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+}
+@keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* 2. Onboarding & Central Cards */
+.central-card-container { display: flex; justify-content: center; align-items: center; height: 100vh; }
+.card { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center; }
+.onboarding-card { width: 350px; }
+.onboarding-logo { width: 100px; margin-bottom: 20px; }
+.avatar-lg { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #FF6A88; }
+.avatar-sm { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+.avatar-xs { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; }
+
+input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 10px; box-sizing: border-box; }
+.btn-primary { width: 100%; background: var(--primary-gradient); color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer; }
+.custom-file-upload { display: inline-block; padding: 10px; margin: 15px 0; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; color: #777; width: 100%; box-sizing: border-box; background: white; }
+.custom-file-upload input { display: none; }
+
+/* 3. Main App Layout */
+#main-app-container { height: 100vh; display: flex; flex-direction: column; background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); }
+.app-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--border); background: white; z-index: 100; }
+.logo-text-sm { font-size: 1.5rem; background: var(--primary-gradient); -webkit-background-clip: text; color: transparent; font-weight: 600; }
+.header-icons { display: flex; align-items: center; gap: 20px; }
+.icon-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; position: relative; }
+.badge { position: absolute; top: -5px; right: -10px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; }
+
+.app-page { flex-grow: 1; overflow-y: auto; }
+
+/* Home Page (Search) */
+.home-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
+.home-search-container { position: absolute; bottom: 50px; width: 60%; max-width: 500px; }
+.home-search-container input { border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+#global-search-results { position: absolute; bottom: 55px; background: white; width: 100%; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; z-index: 200; }
+#global-search-results li { padding: 10px 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+
+/* Messaging Layout */
+.messaging-layout { display: flex; height: 100%; }
+.message-sidebar { width: 300px; border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
+#chat-list { list-style: none; padding: 0; margin: 0; }
+.chat-item { display: flex; align-items: center; gap: 10px; padding: 15px; cursor: pointer; border-bottom: 1px solid #eee; }
+.chat-item.active { background-color: #efefef; }
+
+.chat-window { flex-grow: 1; display: flex; flex-direction: column; background: #fff; }
+.chat-header { padding: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; font-weight: 600; }
+#message-display { flex-grow: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+
+/* Input Area */
+.input-area { padding: 20px; border-top: 1px solid var(--border); }
+.input-wrapper { border: 2px solid #eee; border-radius: 30px; padding: 6px 20px; display: flex; align-items: center; background: white;}
+.input-wrapper input { border: none; flex-grow: 1; outline: none; padding: 10px; margin: 0; }
+#send-btn { background: none; border: none; color: #FF6A88; font-weight: 600; cursor: pointer; }
+.media-upload { cursor: pointer; color: #777; font-size: 1.2rem; }
+
+/* Profile View */
+.profile-view-card { width: 400px; }
+.profile-actions { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+.profile-actions button { flex-grow: 1; padding: 10px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; }
+.not-following { background: var(--insta-blue); color: white; }
+.following { background: #efefef; color: black; }
+.message-btn { border: 1px solid var(--border) !important; background: white; color: black; }

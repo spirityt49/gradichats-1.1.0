@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradiChat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="animated-bg">
+
+    <div id="onboarding-container" class="central-card-container">
+        <div class="card onboarding-card">
+            <img src="logo.png" class="onboarding-logo" alt="GradiChat">
+
+            <div id="step-username" class="onboarding-step">
+                <h2>Set Username</h2>
+                <input type="text" id="reg-username" placeholder="Username (required)">
+                <button class="btn-primary" onclick="nextOnboardingStep('pass')">Next</button>
+            </div>
+
+            <div id="step-pass" class="onboarding-step hidden">
+                <h2>Create Password</h2>
+                <input type="password" id="reg-password" placeholder="Password (required)">
+                <button class="btn-primary" onclick="nextOnboardingStep('profile')">Next</button>
+            </div>
+
+            <div id="step-profile" class="onboarding-step hidden">
+                <h2>Add Profile Picture</h2>
+                <img id="reg-avatar-preview" src="placeholder.png" class="avatar-lg">
+                <label class="custom-file-upload">
+                    <input type="file" id="reg-avatar-input" accept="image/*" onchange="previewRegistrationAvatar()">
+                    Upload Image
+                </label>
+                <button class="btn-primary" onclick="completeOnboarding()">Finish & Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-app-container" class="hidden">
+        
+        <header class="app-header">
+            <span class="logo-text-sm">GradiChat</span>
+            <div class="header-icons">
+                <button class="icon-btn" onclick="showAppPage('home')">🏠</button>
+                <button class="icon-btn" onclick="showAppPage('messages')">💬 Messages <span class="badge">1</span></button>
+                <img id="my-header-avatar" src="placeholder.png" class="avatar-xs" onclick="openMyProfile()">
+            </div>
+        </header>
+
+        <div id="page-home" class="app-page">
+            <div class="home-content">
+                <h1>Welcome, <span id="home-greeting-name">User</span>!</h1>
+                <p>Start a conversation or find your friends.</p>
+                <div class="home-search-container">
+                    <input type="text" id="global-search" placeholder="Search usernames..." onkeyup="handleGlobalSearch()">
+                    <ul id="global-search-results" class="hidden">
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-messages" class="app-page hidden">
+            <div class="messaging-layout">
+                <aside class="message-sidebar">
+                    <ul id="chat-list">
+                        <li class="chat-item active" onclick="loadChat('#Global Chat', 'global.png')">
+                            <img src="global.png" class="avatar">
+                            <div class="chat-info"><span>#Global Chat</span><p>Online Users...</p></div>
+                        </li>
+                    </ul>
+                </aside>
+                <main class="chat-window">
+                    <header class="chat-header">
+                        <img id="active-chat-avatar" class="avatar-sm" src="global.png">
+                        <span id="active-chat-name">Global Chat</span>
+                    </header>
+                    <div id="message-display"></div>
+                    <div class="input-area">
+                        <div class="input-wrapper">
+                            <button class="icon-btn">😊</button>
+                            <input type="text" id="msg-input" placeholder="Message...">
+                            <label class="media-upload">
+                                <input type="file" accept="image/*,video/*" style="display:none">
+                                📎
+                            </label>
+                            <button id="send-btn" onclick="send()">Send</button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="page-profile-view" class="app-page hidden central-card-container">
+            <div class="card profile-view-card">
+                <img id="view-profile-avatar" src="placeholder.png" class="avatar-lg">
+                <h2 id="view-profile-name">Username</h2>
+                <div class="stats">
+                    <span><strong>128</strong> Posts</span>
+                    <span id="follower-count"><strong>450</strong> Followers</span>
+                </div>
+                <div class="profile-actions">
+                    <button id="profile-follow-btn" class="not-following" onclick="toggleFollowInProfile()">Follow</button>
+                    <button class="message-btn" onclick="startChatFromProfile()">Message</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
